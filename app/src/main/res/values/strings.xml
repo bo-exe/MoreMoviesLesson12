@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MovieList</string>
+    <string name="filter_on">Show all Movies</string>
+    <string name="filter_off">Show all PG Movies</string>
+    <string name="option1">Show List of Movies</string>
+    <string name="option2">Insert New Movie</string>
+    <string name="tvTitle">Movie Title</string>
+    <string name="etTitle">Enter movie title here</string>
+    <string name="tvGenre">Genre</string>
+    <string name="etGenre">Enter genre here</string>
+    <string name="tvYear">Year</string>
+    <string name="etYear">Enter year of release here</string>
+    <string name="tvRating">Rating</string>
+    <string name="btnInsert">Insert</string>
+    <string name="btnShowList">Show List</string>
+    <string name="rowTitle">Title</string>
+    <string name="rowGenre">Genre</string>
+    <string name="rowYear">Year</string>
+    <string name="etID">Movie ID</string>
+    <string name="editTitle">Movie Title</string>
+    <string name="editGenre">Genre</string>
+    <string name="editYear">Year</string>
+    <string name="editRating">Rating</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnUpdate">Update</string>
+</resources>
