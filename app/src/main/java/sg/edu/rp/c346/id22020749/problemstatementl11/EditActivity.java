@@ -1,7 +1,9 @@
 package sg.edu.rp.c346.id22020749.problemstatementl11;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -85,23 +87,53 @@ public class EditActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper db = new DBHelper(EditActivity.this);
-                db.deleteMovie(data.getId());
 
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EditActivity.this);
 
-                Toast.makeText(EditActivity.this, "Movie deleted", Toast.LENGTH_LONG).show();
-            }
-        });
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to delete the movie " + editEtTitle);
+                myBuilder.setCancelable(false);
+
+                myBuilder.setPositiveButton("CANCEL", null);
+                myBuilder.setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DBHelper db = new DBHelper(EditActivity.this);
+                        db.deleteMovie(data.getId());
+
+                        Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
+                        Toast.makeText(EditActivity.this, "Movie deleted", Toast.LENGTH_LONG).show();
+                    }
+                });
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+                    }
+                });
+
+
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+
+                AlertDialog.Builder btnCancelBuilder = new AlertDialog.Builder(EditActivity.this);
+
+                btnCancelBuilder.setTitle("Danger");
+                btnCancelBuilder.setMessage("Are you sure you want to discard the changes");
+                btnCancelBuilder.setCancelable(false);
+
+                btnCancelBuilder.setPositiveButton("DO NOT DISCARD", null);
+                btnCancelBuilder.setNegativeButton("DISCARD", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                });
             }
         });
 
